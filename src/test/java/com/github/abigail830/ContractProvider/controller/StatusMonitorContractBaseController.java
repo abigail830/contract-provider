@@ -8,10 +8,10 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 
 @Ignore
 @AutoConfigureMockMvc
-public class HealthMonitorContractBaseController {
+public class StatusMonitorContractBaseController {
 
     @Before
     public void setUp() {
-        RestAssuredMockMvc.standaloneSetup(new HealthMonitorController());
+        RestAssuredMockMvc.standaloneSetup(new StatusMonitorController());
     }
 }

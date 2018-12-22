@@ -125,16 +125,16 @@
 				<extensions>true</extensions>
 				<configuration>
 					<contractsDirectory>contracts</contractsDirectory>
-					<baseClassForTests>com.github.abigail830.ContractProvider.controller.HealthMonitorContractBaseController</baseClassForTests>
+					<baseClassForTests>com.github.abigail830.ContractProvider.controller.StatusMonitorContractBaseController</baseClassForTests>
 					<!--<contractsPath>contract</contractsPath>-->
 					<!--<contractsRepositoryUrl>github.com/abigail830/MuServer-Contract.git</contractsRepositoryUrl>-->
 				<!--<configuration>-->
-					<baseClassMappings>
-						<baseClassMapping>
-							<contractPackageRegex>.*ContractProvider.*</contractPackageRegex>
-							<baseClassFQN>com.github.abigail830.ContractProvider.controller.HealthMonitorContractBaseController</baseClassFQN>
-						</baseClassMapping>
-					</baseClassMappings>
+					<!--<baseClassMappings>-->
+						<!--<baseClassMapping>-->
+							<!--<contractPackageRegex>.*ContractProvider.*</contractPackageRegex>-->
+							<!--<baseClassFQN>com.github.abigail830.ContractProvider.controller.HealthMonitorContractBaseController</baseClassFQN>-->
+						<!--</baseClassMapping>-->
+					<!--</baseClassMappings>-->
 					<!--<baseClassForTests>com.github.abigail830.ContractProvider.controller.HealthMonitorContractBaseController</baseClassForTests>-->
 					<!--<contractDependency>-->
 						<!--<groupId>com.github.abigail830</groupId>-->
