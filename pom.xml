@@ -37,7 +37,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<spring-cloud.version>Greenwich.RC1</spring-cloud.version>
+		<spring-cloud.version>Finchley.SR2</spring-cloud.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<swagger.version>2.9.2</swagger.version>
@@ -96,6 +96,7 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>${swagger.version}</version>
 		</dependency>
+
 	</dependencies>
 
 	<dependencyManagement>
@@ -123,10 +124,45 @@
 				<version>2.0.2.RELEASE</version>
 				<extensions>true</extensions>
 				<configuration>
-					<baseClassForTests>com.github.abigail830.ContractProvider.controller.HealthMonitorControllerTest</baseClassForTests>
-					<contractsPath>contract</contractsPath>
+					<contractsDirectory>contracts</contractsDirectory>
+					<baseClassForTests>com.github.abigail830.ContractProvider.controller.HealthMonitorContractBaseController</baseClassForTests>
+					<!--<contractsPath>contract</contractsPath>-->
 					<!--<contractsRepositoryUrl>github.com/abigail830/MuServer-Contract.git</contractsRepositoryUrl>-->
+				<!--<configuration>-->
+					<baseClassMappings>
+						<baseClassMapping>
+							<contractPackageRegex>.*ContractProvider.*</contractPackageRegex>
+							<baseClassFQN>com.github.abigail830.ContractProvider.controller.HealthMonitorContractBaseController</baseClassFQN>
+						</baseClassMapping>
+					</baseClassMappings>
+					<!--<baseClassForTests>com.github.abigail830.ContractProvider.controller.HealthMonitorContractBaseController</baseClassForTests>-->
+					<!--<contractDependency>-->
+						<!--<groupId>com.github.abigail830</groupId>-->
+						<!--<artifactId>common-contracts</artifactId>-->
+					<!--</contractDependency>-->
+					<!-- The JAR with contracts should be taken from Maven local -->
+					<!--<contractsMode>LOCAL</contractsMode>-->
+					<!-- Base package for generated tests -->
+					<!--<basePackageForTests>com.github.abigail830</basePackageForTests>-->
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>exec-maven-plugin</artifactId>
+				<groupId>org.codehaus.mojo</groupId>
+				<version>1.1.1</version>
+					<executions>
+						<execution>
+							<id>download_contract</id>
+							<phase>compile</phase>
+							<goals>
+								<goal>exec</goal>
+							</goals>
+							<configuration>
+								<executable>${basedir}/update-contract.sh</executable>
+							</configuration>
+						</execution>
+					</executions>
 			</plugin>
 		</plugins>
 	</build>
